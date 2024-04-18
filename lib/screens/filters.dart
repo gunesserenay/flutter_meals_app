@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_meals_app/screens/tabs.dart';
+import 'package:flutter_meals_app/widgets/main_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
   const FiltersScreen({super.key});
@@ -15,11 +17,24 @@ class _FiltersScreenState extends State<FiltersScreen> {
       appBar: AppBar(
         title: const Text('Your filters'),
       ),
+      // drawer: MainDrawer(
+      //   onSelectScreen: (identifier) {
+      //     Navigator.of(context).pop();
+      //     if (identifier == 'meals') {
+      //       Navigator.of(context).pushReplacement(
+      //           MaterialPageRoute(builder: (ctx) => const TabsScreen()));
+      //     }
+      //   },
+      // ),
       body: Column(
         children: [
           SwitchListTile(
               value: _glutenFreeFilterSet,
-              onChanged: (isChecked) {},
+              onChanged: (isChecked) {
+                setState(() {
+                  _glutenFreeFilterSet = isChecked;
+                });
+              },
               title: Text(
                 'Gluten-free',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
